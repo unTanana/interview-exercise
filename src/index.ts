@@ -21,13 +21,15 @@ export async function openDb() {
 const app = express();
 const port = 3000;
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
 	res.send("Hello World!");
 });
 
 app.get("/users", async (req, res) => {
 	const db = await openDb();
-	return res.send(getUsers(db));
+	return res.json(getUsers(db)());
 });
 
 app.listen(port, () => {
