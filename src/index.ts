@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
 
 app.get("/users", async (req, res) => {
 	const db = await openDb();
-	return res.json(getUsers(db)());
+	return res.json(await getUsers(db)());
 });
 
 app.listen(port, () => {
