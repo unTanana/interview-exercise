@@ -2,6 +2,7 @@ import * as express from "express";
 
 import * as sqlite3 from "sqlite3";
 import { open } from "sqlite";
+import { getUsers } from "./api/users";
 
 // you would have to import / invoke this in another file
 export async function openDb() {
@@ -27,7 +28,7 @@ app.get("/", (req, res) => {
 
 app.get("/users", async (req, res) => {
 	const db = await openDb();
-	return res.send(await db.all("SELECT * FROM users"));
+	return res.send(getUsers(db));
 });
 
 app.listen(port, () => {
