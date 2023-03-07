@@ -4,7 +4,6 @@ import * as sqlite3 from "sqlite3";
 import { open } from "sqlite";
 import { getUsers } from "./api/users";
 
-// you would have to import / invoke this in another file
 export async function openDb() {
 	return open({
 		filename: "./database.db",
@@ -32,5 +31,5 @@ app.get("/users", async (req, res) => {
 });
 
 app.listen(port, () => {
-	console.log(`Example app listening on port ${port}`);
+	console.log(`App listening on port ${port}`);
 });
